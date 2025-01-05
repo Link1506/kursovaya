@@ -9,7 +9,7 @@ public class Main {
     private final static String PATRONYMIC_NAMES[] = {"Романович", "Валентинович", "Иванович", "Андреевич", "Данилович", "Михайлович", "Андреевич",};
 
 
-    private final static Employee[] EMPLOYEES = new Employee[10];
+    private  static Employee[] EMPLOYEES = new Employee[10];
 
     private static void initEmployees() {
         for (int i = 0; i < EMPLOYEES.length; i++) {
