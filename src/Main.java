@@ -9,21 +9,21 @@ public class Main {
     private final static String PATRONYMIC_NAMES[] = {"Романович", "Валентинович", "Иванович", "Андреевич", "Данилович", "Михайлович", "Андреевич",};
 
 
-    private static Employee[] employee = new Employee[10];
+    private  static Employee[] employees = new Employee[10];
 
-    private static void initemployee() {
-        for (int i = 0; i < employee.length; i++) {
+    private static void initEmployees() {
+        for (int i = 0; i < employees.length; i++) {
             String fullName = SURNAMES[RANDOM.nextInt(0, SURNAMES.length)] + " " +
                     NAMES[RANDOM.nextInt(0, NAMES.length)] + " " +
                     PATRONYMIC_NAMES[RANDOM.nextInt(0, PATRONYMIC_NAMES.length)];
 
-            employee[i] = new Employee(fullName, RANDOM.nextInt(1, 6), RANDOM.nextInt(75_000, 120_000));
+            employees[i] = new Employee(fullName, RANDOM.nextInt(1, 6), RANDOM.nextInt(75_000, 120_000));
 
         }
     }
 
     public static void main(String[] args) {
-        initemployee();
+        initEmployees();
         print();
         System.out.println("Сумма затрат на ЗП сотрудников " + calculateSumOfSalaries());
         System.out.println("Сотрудник с минимальной ЗП " + MinSalary());
@@ -34,14 +34,14 @@ public class Main {
     }
 
     private static void print() {
-        for (Employee employee : employee) {
+        for (Employee employee : employees) {
             System.out.println(employee);
         }
     }
 
     private static int calculateSumOfSalaries() {
         int sum = 0;
-        for (Employee employee : employee) {
+        for (Employee employee : employees) {
             sum += employee.getSalary();
         }
         return sum;
@@ -49,8 +49,8 @@ public class Main {
 
     private static Employee MinSalary() {
         Employee employeeMinSalary = null;
-        for (Employee employee : employee) {
-            if (employeeMinSalary == null || employee.getSalary() < employeeMinSalary.getSalary()) {
+        for (Employee employee : employees) {
+            if (employeeMinSalary == null || employee.getSalary() < employeeMinSalary.getSalary()){
                 employeeMinSalary = employee;
             }
         }
@@ -59,8 +59,8 @@ public class Main {
 
     private static Employee MaxSalary() {
         Employee employeeMaxSalary = null;
-        for (Employee employee : employee) {
-            if (employeeMaxSalary == null || employee.getSalary() > employeeMaxSalary.getSalary()) {
+        for (Employee employee : employees) {
+            if (employeeMaxSalary == null || employee.getSalary() > employeeMaxSalary.getSalary()){
                 employeeMaxSalary = employee;
             }
         }
@@ -68,14 +68,18 @@ public class Main {
     }
 
     private static double calculateAverageOfSalaries() {
-        return (double) calculateSumOfSalaries() / employee.length;
+        return (double) calculateSumOfSalaries() / employees.length;
     }
 
     private static void printFullNames() {
-        for (Employee employee : employee) {
+        for (Employee employee : employees) {
             System.out.println(employee.getFullName());
         }
     }
+
+
+
+
 
 
 }
